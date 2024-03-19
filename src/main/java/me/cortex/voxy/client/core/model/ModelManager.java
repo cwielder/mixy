@@ -192,7 +192,7 @@ public class ModelManager {
             this.fluidStateLUT[modelId] = clientFluidStateId;
         }
 
-        var colourProvider = MinecraftClient.getInstance().getBlockColors().providers.get(Registries.BLOCK.getRawId(blockState.getBlock()));
+        var colourProvider = MinecraftClient.getInstance().getBlockColors().providers.get(blockState.getBlock());
 
 
         RenderLayer blockRenderLayer = null;
@@ -385,7 +385,7 @@ public class ModelManager {
 
         int i = 0;
         for (var entry : this.modelsRequiringBiomeColours) {
-            var colourProvider = MinecraftClient.getInstance().getBlockColors().providers.get(Registries.BLOCK.getRawId(entry.getRight().getBlock()));
+            var colourProvider = MinecraftClient.getInstance().getBlockColors().providers.get(entry.getRight().getBlock());
             if (colourProvider == null) {
                 throw new IllegalStateException();
             }
