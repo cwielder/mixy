@@ -1,5 +1,5 @@
 plugins {
-    id 'fabric-loom' version "1.5.7"
+    id 'dev.architectury.loom' version '1.5-SNAPSHOT'
     id 'maven-publish'
 }
 
@@ -20,12 +20,13 @@ repositories {
     }
     maven { url "https://maven.shedaniel.me/" }
     maven { url "https://maven.terraformersmc.com/releases/" }
+    maven { url "https://maven.neoforged.net" }
 }
 
 processResources {
     inputs.property "version", project.version
     archivesBaseName = "voxy"
-    filesMatching("fabric.mod.json") {
+    filesMatching("META-INF/mods.toml") {
         expand "version": project.version
     }
 }
@@ -37,26 +38,29 @@ loom {
 dependencies {
     // To change the versions see the gradle.properties file
     minecraft "com.mojang:minecraft:${project.minecraft_version}"
-    mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
-    modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
+    mappings loom.layered() {
+        it.mappings("net.fabricmc:yarn:${project.yarn_mappings}:v2")
+        it.mappings file("mappings/yarnpatch.tiny")
+    }
+    neoForge "net.neoforged:neoforge:${project.neoforge_version}"
 
-    modImplementation(fabricApi.module("fabric-api-base", project.fabric_version))
-    modImplementation(fabricApi.module("fabric-rendering-fluids-v1", project.fabric_version))
-    modImplementation(fabricApi.module("fabric-resource-loader-v0", project.fabric_version))
-    modImplementation(fabricApi.module("fabric-command-api-v2", project.fabric_version))
-    modImplementation("net.fabricmc.fabric-api:fabric-rendering-data-attachment-v1:0.3.38+73761d2e9a")
-
-    modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
+//    modImplementation(fabricApi.module("fabric-api-base", project.fabric_version))
+//    modImplementation(fabricApi.module("fabric-rendering-fluids-v1", project.fabric_version))
+//    modImplementation(fabricApi.module("fabric-resource-loader-v0", project.fabric_version))
+//    modImplementation(fabricApi.module("fabric-command-api-v2", project.fabric_version))
+//    modImplementation("net.fabricmc.fabric-api:fabric-rendering-data-attachment-v1:0.3.38+73761d2e9a")
+//
+//    modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 
     //TODO: this is to eventually not need sodium installed as atm its just used for parsing shaders
-    modRuntimeOnly "maven.modrinth:sodium:mc1.20.4-0.5.8"
-    modCompileOnly "maven.modrinth:sodium:mc1.20.4-0.5.8"
+    modRuntimeOnly "maven.modrinth:embeddium:0.3.9+mc1.20.4"
+    modCompileOnly "maven.modrinth:embeddium:0.3.9+mc1.20.4"
 
     //modRuntimeOnly "maven.modrinth:nvidium:0.2.6-beta"
     modCompileOnly "maven.modrinth:nvidium:0.2.6-beta"
 
-    modImplementation("maven.modrinth:cloth-config:13.0.121+fabric")
-    modImplementation("maven.modrinth:modmenu:9.0.0")
+    modImplementation("maven.modrinth:cloth-config:13.0.121+neoforge")
+    //modImplementation("maven.modrinth:modmenu:9.0.0")
     modCompileOnly("maven.modrinth:iris:1.6.17+1.20.4")
     //modRuntimeOnly("maven.modrinth:iris:1.6.17+1.20.4")
     modCompileOnly("maven.modrinth:starlight:1.1.3+1.20.4")
@@ -95,7 +99,7 @@ jar {
     }
 }
 
-project.ext.lwjglVersion = "3.3.3"
+project.ext.lwjglVersion = "3.3.1"
 project.ext.lwjglNatives = "natives-windows"
 
 repositories {
@@ -106,18 +110,25 @@ dependencies {
     implementation platform("org.lwjgl:lwjgl-bom:$lwjglVersion")
 
     implementation "org.lwjgl:lwjgl"
+    forgeRuntimeLibrary "org.lwjgl:lwjgl"
     include(implementation "org.lwjgl:lwjgl-lmdb")
+    forgeRuntimeLibrary "org.lwjgl:lwjgl-lmdb"
     include(implementation "org.lwjgl:lwjgl-zstd")
-    runtimeOnly "org.lwjgl:lwjgl:$lwjglVersion:natives-windows"
-    runtimeOnly "org.lwjgl:lwjgl:$lwjglVersion:natives-linux"
-    include(runtimeOnly "org.lwjgl:lwjgl-lmdb:$lwjglVersion:natives-windows")
-    include(runtimeOnly "org.lwjgl:lwjgl-zstd:$lwjglVersion:natives-windows")
-    include(runtimeOnly "org.lwjgl:lwjgl-lmdb:$lwjglVersion:natives-linux")
-    include(runtimeOnly "org.lwjgl:lwjgl-zstd:$lwjglVersion:natives-linux")
+    forgeRuntimeLibrary "org.lwjgl:lwjgl-zstd"
+
+    forgeRuntimeLibrary "org.lwjgl:lwjgl:$lwjglVersion:natives-windows"
+    forgeRuntimeLibrary "org.lwjgl:lwjgl:$lwjglVersion:natives-linux"
+    include(forgeRuntimeLibrary "org.lwjgl:lwjgl-lmdb:$lwjglVersion:natives-windows")
+    include(forgeRuntimeLibrary "org.lwjgl:lwjgl-zstd:$lwjglVersion:natives-windows")
+    include(forgeRuntimeLibrary "org.lwjgl:lwjgl-lmdb:$lwjglVersion:natives-linux")
+    include(forgeRuntimeLibrary "org.lwjgl:lwjgl-zstd:$lwjglVersion:natives-linux")
 
     include(implementation 'org.rocksdb:rocksdbjni:8.10.0')
+    forgeRuntimeLibrary 'org.rocksdb:rocksdbjni:8.10.0'
     include(implementation 'redis.clients:jedis:5.1.0')
+    forgeRuntimeLibrary 'redis.clients:jedis:5.1.0'
     include(implementation 'org.apache.commons:commons-pool2:2.12.0')
+    forgeRuntimeLibrary 'org.apache.commons:commons-pool2:2.12.0'
     //implementation 'org.rocksdb:rocksdbjni:8.10.0'
     //implementation 'redis.clients:jedis:5.1.0'
 }

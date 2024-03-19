@@ -1,7 +1,5 @@
 package me.cortex.voxy.client.config;
 
-import com.terraformersmc.modmenu.api.ConfigScreenFactory;
-import com.terraformersmc.modmenu.api.ModMenuApi;
 import me.cortex.voxy.client.core.IGetVoxelCore;
 import me.shedaniel.clothconfig2.ClothConfigDemo;
 import me.shedaniel.clothconfig2.api.ConfigBuilder;
@@ -12,12 +10,15 @@ import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.text.Text;
 
 import java.util.List;
+import java.util.function.BiFunction;
+import java.util.function.Function;
+import java.util.function.Supplier;
 
-public class VoxyConfigScreenFactory implements ModMenuApi {
+public class VoxyConfigScreenFactory {
     private static final VoxyConfig DEFAULT = new VoxyConfig();
-    @Override
-    public ConfigScreenFactory<?> getModConfigScreenFactory() {
-        return parent -> buildConfigScreen(parent, VoxyConfig.CONFIG);
+
+    public static BiFunction<MinecraftClient, Screen, Screen> getModConfigScreenFactory() {
+        return (mc, parent) -> buildConfigScreen(parent, VoxyConfig.CONFIG);
     }
 
     private static Screen buildConfigScreen(Screen parent, VoxyConfig config) {

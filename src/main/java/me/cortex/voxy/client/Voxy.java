@@ -3,28 +3,24 @@ package me.cortex.voxy.client;
 import me.cortex.voxy.client.core.VoxelCore;
 import me.cortex.voxy.client.saver.ContextSelectionSystem;
 import me.cortex.voxy.client.terrain.WorldImportCommand;
-import me.cortex.voxy.common.config.Serialization;
-import net.fabricmc.api.ClientModInitializer;
-        import net.fabricmc.fabric.api.client.command.v2.ClientCommandRegistrationCallback;
-import net.fabricmc.loader.api.FabricLoader;
-import net.fabricmc.loader.api.ModContainer;
 import net.minecraft.client.world.ClientWorld;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.ModList;
+import net.neoforged.fml.common.Mod;
+import net.neoforged.neoforge.client.event.RegisterClientCommandsEvent;
 
-public class Voxy implements ClientModInitializer {
+@Mod.EventBusSubscriber(value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.FORGE)
+public class Voxy {
     public static final String VERSION;
 
     static {
-        ModContainer mod = (ModContainer) FabricLoader.getInstance().getModContainer("voxy").orElseThrow(NullPointerException::new);
-        VERSION = mod.getMetadata().getVersion().getFriendlyString();
+        VERSION = ModList.get().getModFileById("voxy").versionString();
     }
 
-    @Override
-    public void onInitializeClient() {
-        Serialization.init();
-
-        ClientCommandRegistrationCallback.EVENT.register((dispatcher, registryAccess) -> {
-            dispatcher.register(WorldImportCommand.register());
-        });
+    @SubscribeEvent
+    static void onInitializeClient(RegisterClientCommandsEvent event) {
+        event.getDispatcher().register(WorldImportCommand.register());
     }
 
 
