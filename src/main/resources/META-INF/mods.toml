@@ -2,9 +2,9 @@ modLoader="javafml"
 loaderVersion="[1,)"
 license="LGPL-3.0"
 [[mods]]
-modId="voxy"
+modId="mixy"
 version="${version}"
-displayName="Voxy"
+displayName="Mixy"
 displayTest = "IGNORE_SERVER_VERSION"
 #logoFile="assets/voxy/icon.png"
 authors="Cortex, Ferri_Arnus"
@@ -39,13 +39,12 @@ config = "voxy.mixins.json"
 [[accessTransformers]]
 file="META-INF/accesstransformer.cfg"
 
-#[[mods]]
-#modId="nvidium"
-#displayName="Nvidium (Acedium)"
-#version="${version}"
-#authors="Cortex"
-#logoFile="assets/nvidium/nvidium.png"
-#description='''
-#Experimental port of nvidium, bugs will be present
-#Replacement rendering engine for sodium/embeddium
-#'''
+[[mods]]
+modId="voxy"
+displayName="Voxy (Mixy)"
+version="${version}"
+authors="Cortex"
+logoFile="assets/voxy/icon.png"
+description='''
+Far distance rendering mod utilising LoDs
+'''

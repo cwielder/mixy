@@ -6,6 +6,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import me.cortex.voxy.common.storage.config.CompressorConfig;
 import me.cortex.voxy.common.storage.config.StorageConfig;
+import me.cortex.voxy.MixyStub;
 import net.neoforged.fml.loading.LoadingModList;
 
 import java.io.BufferedReader;
@@ -96,7 +97,7 @@ public class Serialization {
         Map<Class<?>, GsonConfigSerialization<?>> serializers = new HashMap<>();
 
         Set<String> clazzs = new LinkedHashSet<>();
-        var path = LoadingModList.get().getModFileById("voxy").getFile().getFilePath().getRoot();
+        var path = LoadingModList.get().getModFileById(MixyStub.MODID).getFile().getFilePath().getRoot();
         clazzs.addAll(collectAllClasses(path, BASE_SEARCH_PACKAGE));
         clazzs.addAll(collectAllClasses(BASE_SEARCH_PACKAGE));
         int count = 0;

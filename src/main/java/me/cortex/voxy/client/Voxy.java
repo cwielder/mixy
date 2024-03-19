@@ -1,5 +1,6 @@
 package me.cortex.voxy.client;
 
+import me.cortex.voxy.MixyStub;
 import me.cortex.voxy.client.core.VoxelCore;
 import me.cortex.voxy.client.saver.ContextSelectionSystem;
 import me.cortex.voxy.client.terrain.WorldImportCommand;
@@ -18,7 +19,7 @@ public class Voxy {
     public static final String VERSION;
 
     static {
-        VERSION = ModList.get().getModFileById("voxy").versionString();
+        VERSION = ModList.get().getModFileById(MixyStub.MODID).versionString();
     }
 
     @SubscribeEvent
