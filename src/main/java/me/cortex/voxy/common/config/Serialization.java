@@ -97,7 +97,7 @@ public class Serialization {
         Map<Class<?>, GsonConfigSerialization<?>> serializers = new HashMap<>();
 
         Set<String> clazzs = new LinkedHashSet<>();
-        var path = LoadingModList.get().getModFileById(MixyStub.MODID).getFile().getFilePath().getRoot();
+        var path = LoadingModList.get().getModFileById(MixyStub.MODID).getFile().getFilePath();
         clazzs.addAll(collectAllClasses(path, BASE_SEARCH_PACKAGE));
         clazzs.addAll(collectAllClasses(BASE_SEARCH_PACKAGE));
         int count = 0;

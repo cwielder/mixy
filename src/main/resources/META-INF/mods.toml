@@ -1,6 +1,6 @@
 modLoader="javafml"
 loaderVersion="[1,)"
-license="LGPL-3.0"
+license="ARR"
 [[mods]]
 modId="mixy"
 version="${version}"
@@ -12,21 +12,21 @@ description='''
 Far distance rendering mod utilising LoDs
 '''
 
-[[dependencies.voxy]]
+[[dependencies.mixy]]
 modId = "neoforge"
 type="required"
 versionRange = "[20.4.40-beta,)"
 ordering = "NONE"
 side = "BOTH"
 
-[[dependencies.voxy]]
+[[dependencies.mixy]]
 modId = "minecraft"
 type="required"
 versionRange = "[1.20.4,1.20.5)"
 ordering = "NONE"
 side = "BOTH"
 
-[[dependencies.voxy]]
+[[dependencies.mixy]]
 modId = "embeddium"
 type="required"
 versionRange = "[0.2.2+mc1.20.4, )"
@@ -36,14 +36,15 @@ side = "CLIENT"
 [[mixins]]
 config = "voxy.mixins.json"
 
-[[accessTransformers]]
-file="META-INF/accesstransformer.cfg"
+#[[accessTransformers]]
+#file="META-INF/accesstransformer.cfg"
 
 [[mods]]
 modId="voxy"
 displayName="Voxy (Mixy)"
 version="${version}"
 authors="Cortex"
+license="ARR"
 logoFile="assets/voxy/icon.png"
 description='''
 Far distance rendering mod utilising LoDs

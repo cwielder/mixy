@@ -22,16 +22,20 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.RotationAxis;
 import net.minecraft.util.math.random.LocalRandom;
+import net.minecraft.util.math.random.Random;
 import net.minecraft.world.BlockRenderView;
 import net.minecraft.world.LightType;
 import net.minecraft.world.biome.ColorResolver;
 import net.minecraft.world.chunk.light.LightingProvider;
+import net.neoforged.neoforge.client.ChunkRenderTypeSet;
+import net.neoforged.neoforge.client.model.data.ModelData;
 import org.jetbrains.annotations.Nullable;
 import org.joml.Matrix4f;
 import org.lwjgl.opengl.GL11C;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import static org.lwjgl.opengl.ARBFramebufferObject.*;
 import static org.lwjgl.opengl.ARBImaging.GL_FUNC_ADD;
@@ -129,12 +133,11 @@ public class ModelTextureBakery {
         }), VertexSorter.BY_Z);
 
 
-
-        RenderLayer renderLayer = null;
+        ChunkRenderTypeSet set;
         if (!renderFluid) {
-            renderLayer = RenderLayers.getBlockLayer(state);
+            set = model.getRenderTypes(state, Random.create(), ModelData.EMPTY);
         } else {
-            renderLayer = RenderLayers.getFluidLayer(state.getFluidState());
+            set = ChunkRenderTypeSet.of(RenderLayers.getFluidLayer(state.getFluidState()));
         }
 
 
@@ -154,7 +157,7 @@ public class ModelTextureBakery {
 
 
         //TODO: Find a better solution
-        if (renderLayer == RenderLayer.getTranslucent()) {
+        if (set.contains(RenderLayer.getTranslucent())) {
             //Very hacky blend function to retain the effect of the applied alpha since we dont really want to apply alpha
             // this is because we apply the alpha again when rendering the terrain meaning the alpha is being double applied
             glBlendFuncSeparate(GL_ONE_MINUS_DST_ALPHA, GL_DST_ALPHA, GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
@@ -180,7 +183,7 @@ public class ModelTextureBakery {
             //glBlitNamedFramebuffer(this.framebuffer.id, oldFB, 0,0,16,16,300*(i>>1),300*(i&1),300*(i>>1)+256,300*(i&1)+256, GL_COLOR_BUFFER_BIT, GL_NEAREST);
         }
 
-        renderLayer.endDrawing();
+        set.forEach(RenderPhase::endDrawing);
         glDisable(GL_STENCIL_TEST);
         glDisable(GL_BLEND);
 
