@@ -1,16 +1,19 @@
 package me.cortex.voxy;
 
 import me.cortex.voxy.client.config.VoxyConfigScreenFactory;
-import net.neoforged.fml.ModContainer;
-import net.neoforged.fml.common.Mod;
-import net.neoforged.neoforge.client.ConfigScreenHandler;
+import net.minecraftforge.client.ConfigScreenHandler;
+import net.minecraftforge.fml.ModContainer;
+import net.minecraftforge.fml.ModLoadingContext;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.minecraftforge.fml.event.lifecycle.FMLConstructModEvent;
 
 @Mod(MixyStub.MODID)
 public class MixyStub {
 
     public static final String MODID = "mixy";
 
-    public MixyStub(ModContainer container) {
-        container.registerExtensionPoint(ConfigScreenHandler.ConfigScreenFactory.class, () -> new ConfigScreenHandler.ConfigScreenFactory(VoxyConfigScreenFactory.getModConfigScreenFactory()));
+    public MixyStub() {
+
     }
 }

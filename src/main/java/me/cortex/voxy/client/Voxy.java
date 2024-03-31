@@ -1,15 +1,19 @@
 package me.cortex.voxy.client;
 
 import me.cortex.voxy.MixyStub;
+import me.cortex.voxy.client.config.VoxyConfigScreenFactory;
 import me.cortex.voxy.client.core.VoxelCore;
 import me.cortex.voxy.client.saver.ContextSelectionSystem;
 import me.cortex.voxy.client.terrain.WorldImportCommand;
 import net.minecraft.client.world.ClientWorld;
-import net.neoforged.api.distmarker.Dist;
-import net.neoforged.bus.api.SubscribeEvent;
-import net.neoforged.fml.ModList;
-import net.neoforged.fml.common.Mod;
-import net.neoforged.neoforge.client.event.RegisterClientCommandsEvent;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.client.ConfigScreenHandler;
+import net.minecraftforge.client.event.RegisterClientCommandsEvent;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.ModList;
+import net.minecraftforge.fml.ModLoadingContext;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.event.lifecycle.FMLConstructModEvent;
 
 @Mod.EventBusSubscriber(value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class Voxy {

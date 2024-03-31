@@ -66,7 +66,7 @@ public class PostProcessing {
 
             this.colour = new GlTexture().store(GL_RGBA8, 1, width, height);
             this.colourSSAO = new GlTexture().store(GL_RGBA8, 1, width, height);
-            this.depthStencil = new GlTexture().store(GL_DEPTH32F_STENCIL8, 1, width, height); // use instead of GL_DEPTH24_STENCIL8, as GL_DEPTH32F_STENCIL8 is used by forge
+            this.depthStencil = new GlTexture().store(GL_DEPTH24_STENCIL8, 1, width, height);
 
             glTextureParameterf(this.colour.id, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
             glTextureParameterf(this.colour.id, GL_TEXTURE_MAG_FILTER, GL_NEAREST);

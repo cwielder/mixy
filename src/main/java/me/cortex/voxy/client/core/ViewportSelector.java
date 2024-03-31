@@ -2,7 +2,7 @@ package me.cortex.voxy.client.core;
 
 import me.cortex.voxy.client.core.rendering.AbstractFarWorldRenderer;
 import me.cortex.voxy.client.core.rendering.Viewport;
-import net.neoforged.fml.loading.LoadingModList;
+import net.minecraftforge.fml.loading.LoadingModList;
 import org.vivecraft.client_vr.ClientDataHolderVR;
 
 import java.util.HashMap;

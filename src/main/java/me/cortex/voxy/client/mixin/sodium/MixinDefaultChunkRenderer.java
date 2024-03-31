@@ -13,7 +13,6 @@ import net.coderbot.iris.pipeline.ShadowRenderer;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.util.math.MatrixStack;
 import org.joml.Matrix4f;
-import org.spongepowered.asm.mixin.FabricUtil;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;

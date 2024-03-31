@@ -5,7 +5,7 @@ import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import me.cortex.voxy.MixyStub;
-import net.neoforged.fml.loading.LoadingModList;
+import net.minecraftforge.fml.loading.LoadingModList;
 
 import java.io.BufferedReader;
 import java.io.IOException;

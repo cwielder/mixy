@@ -33,8 +33,9 @@ import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.BiomeKeys;
 import net.minecraft.world.biome.ColorResolver;
 import net.minecraft.world.chunk.light.LightingProvider;
-import net.neoforged.neoforge.client.ChunkRenderTypeSet;
-import net.neoforged.neoforge.client.model.data.ModelData;
+import net.minecraftforge.client.ChunkRenderTypeSet;
+import net.minecraftforge.client.model.data.ModelData;
+import net.minecraftforge.registries.ForgeRegistries;
 import org.jetbrains.annotations.Nullable;
 import org.lwjgl.system.MemoryUtil;
 
@@ -195,7 +196,7 @@ public class ModelManager {
             this.fluidStateLUT[modelId] = clientFluidStateId;
         }
 
-        var colourProvider = MinecraftClient.getInstance().getBlockColors().providers.get(blockState.getBlock());
+        var colourProvider = MinecraftClient.getInstance().getBlockColors().providers.get(ForgeRegistries.BLOCKS.getDelegateOrThrow(blockState.getBlock()));
         var model = MinecraftClient.getInstance()
                 .getBakedModelManager()
                 .getBlockModels()
@@ -392,7 +393,7 @@ public class ModelManager {
 
         int i = 0;
         for (var entry : this.modelsRequiringBiomeColours) {
-            var colourProvider = MinecraftClient.getInstance().getBlockColors().providers.get(entry.getRight().getBlock());
+            var colourProvider = MinecraftClient.getInstance().getBlockColors().providers.get(ForgeRegistries.BLOCKS.getDelegateOrThrow(entry.getRight().getBlock()));
             if (colourProvider == null) {
                 throw new IllegalStateException();
             }

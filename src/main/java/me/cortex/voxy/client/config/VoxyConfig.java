@@ -3,7 +3,7 @@ package me.cortex.voxy.client.config;
 import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import net.neoforged.fml.loading.FMLPaths;
+import net.minecraftforge.fml.loading.FMLPaths;
 import org.lwjgl.opengl.GL;
 
 import java.io.FileReader;

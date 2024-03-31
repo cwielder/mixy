@@ -21,7 +21,7 @@ repositories {
     }
     maven { url "https://maven.shedaniel.me/" }
     maven { url "https://maven.terraformersmc.com/releases/" }
-    maven { url "https://maven.neoforged.net" }
+    maven { url "https://maven.minecraftforge.net" }
     maven { url "https://maven.blamejared.com/" }
 }
 
@@ -34,7 +34,14 @@ processResources {
 }
 
 loom {
+    mixin.defaultRefmapName = "voxy.refmap.json"
     accessWidenerPath = file("src/main/resources/voxy.accesswidener")
+
+    forge {
+        mixinConfigs = [
+                "voxy.mixins.json"
+        ]
+    }
 }
 
 configurations {
@@ -52,7 +59,7 @@ dependencies {
         it.mappings("net.fabricmc:yarn:${project.yarn_mappings}:v2")
         it.mappings file("mappings/yarnpatch.tiny")
     }
-    neoForge "net.neoforged:neoforge:${project.neoforge_version}"
+    forge "net.minecraftforge:forge:${project.minecraft_version}-${project.neoforge_version}"
 
 //    modImplementation(fabricApi.module("fabric-api-base", project.fabric_version))
 //    modImplementation(fabricApi.module("fabric-rendering-fluids-v1", project.fabric_version))
@@ -63,22 +70,19 @@ dependencies {
 //    modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 
     //TODO: this is to eventually not need sodium installed as atm its just used for parsing shaders
-    modRuntimeOnly "maven.modrinth:embeddium:0.3.9+mc1.20.4"
-    modCompileOnly "maven.modrinth:embeddium:0.3.9+mc1.20.4"
+    modRuntimeOnly "maven.modrinth:embeddium:0.3.11+mc1.20.1"
+    modCompileOnly "maven.modrinth:embeddium:0.3.11+mc1.20.1"
 
     //modRuntimeOnly "maven.modrinth:nvidium:0.2.6-beta"
     modCompileOnly "maven.modrinth:nvidium:0.2.6-beta"
 
-    modImplementation("maven.modrinth:cloth-config:13.0.121+neoforge")
+    modImplementation("maven.modrinth:cloth-config:11.1.118+forge")
     //modImplementation("maven.modrinth:modmenu:9.0.0")
-    modCompileOnly("maven.modrinth:iris:1.6.17+1.20.4")
+    modCompileOnly("maven.modrinth:iris:1.6.17+1.20.1")
     //modRuntimeOnly("maven.modrinth:iris:1.6.17+1.20.4")
-    modCompileOnly("maven.modrinth:starlight:1.1.3+1.20.4")
+    modCompileOnly("maven.modrinth:starlight:1.1.2+1.20")
     //modCompileOnly("maven.modrinth:immersiveportals:v5.1.7-mc1.20.4")
-    modCompileOnly("maven.modrinth:vivecraft:1.20.4-1.1.6-fabric")
-
-    modCompileOnly("blusunrize.immersiveengineering:ImmersiveEngineering:1.20.4-10.0.1-pre.198")
-    //modRuntimeOnly("blusunrize.immersiveengineering:ImmersiveEngineering:1.20.4-10.0.1-pre.198")
+    modCompileOnly("maven.modrinth:vivecraft:1.20.1-1.1.7-forge")
 }
 
 
