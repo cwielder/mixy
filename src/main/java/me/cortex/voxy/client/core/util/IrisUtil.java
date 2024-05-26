@@ -1,7 +1,8 @@
 package me.cortex.voxy.client.core.util;
 
 import net.irisshaders.iris.shadows.ShadowRenderer;
-import net.minecraftforge.fml.loading.LoadingModList;
+import net.neoforged.fml.ModList;
+import net.neoforged.fml.loading.LoadingModList;
 
 public class IrisUtil {
     private static final boolean IRIS_INSTALLED = LoadingModList.get().getModFileById("iris") != null || LoadingModList.get().getModFileById("oculus") != null;
