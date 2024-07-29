@@ -3,11 +3,8 @@ package me.cortex.voxy.client.config;
 import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-<<<<<<< HEAD
 import me.cortex.voxy.client.core.Capabilities;
 import me.cortex.voxy.client.saver.ContextSelectionSystem;
-=======
->>>>>>> 2e9a2468886dd84d09134d7aebf1b792995d500a
 import net.neoforged.fml.loading.FMLPaths;
 import org.lwjgl.opengl.GL;
 

@@ -1,17 +1,6 @@
 package me.cortex.voxy.client.mixin.sodium;
 
 import me.cortex.voxy.client.core.IGetVoxelCore;
-<<<<<<< HEAD
-=======
-import me.cortex.voxy.client.core.util.IrisUtil;
-import me.jellysquid.mods.sodium.client.gl.device.CommandList;
-import me.jellysquid.mods.sodium.client.render.chunk.ChunkRenderMatrices;
-import me.jellysquid.mods.sodium.client.render.chunk.DefaultChunkRenderer;
-import me.jellysquid.mods.sodium.client.render.chunk.lists.ChunkRenderListIterable;
-import me.jellysquid.mods.sodium.client.render.chunk.terrain.DefaultTerrainRenderPasses;
-import me.jellysquid.mods.sodium.client.render.chunk.terrain.TerrainRenderPass;
-import me.jellysquid.mods.sodium.client.render.viewport.CameraTransform;
->>>>>>> 2e9a2468886dd84d09134d7aebf1b792995d500a
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.util.math.MatrixStack;
 import org.embeddedt.embeddium.impl.gl.device.CommandList;
