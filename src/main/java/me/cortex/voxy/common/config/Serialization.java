@@ -4,8 +4,11 @@ import com.google.gson.*;
 import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+<<<<<<< HEAD
 import me.cortex.voxy.common.storage.config.CompressorConfig;
 import me.cortex.voxy.common.storage.config.StorageConfig;
+=======
+>>>>>>> 2e9a2468886dd84d09134d7aebf1b792995d500a
 import me.cortex.voxy.MixyStub;
 import net.neoforged.fml.loading.LoadingModList;
 
@@ -97,7 +100,11 @@ public class Serialization {
         Map<Class<?>, GsonConfigSerialization<?>> serializers = new HashMap<>();
 
         Set<String> clazzs = new LinkedHashSet<>();
+<<<<<<< HEAD
+        var path = LoadingModList.get().getModFileById(MixyStub.MODID).getFile().getSecureJar().getRootPath();
+=======
         var path = LoadingModList.get().getModFileById(MixyStub.MODID).getFile().getFilePath();
+>>>>>>> 2e9a2468886dd84d09134d7aebf1b792995d500a
         clazzs.addAll(collectAllClasses(path, BASE_SEARCH_PACKAGE));
         clazzs.addAll(collectAllClasses(BASE_SEARCH_PACKAGE));
         int count = 0;

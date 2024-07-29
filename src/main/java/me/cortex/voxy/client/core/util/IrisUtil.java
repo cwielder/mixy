@@ -1,8 +1,10 @@
 package me.cortex.voxy.client.core.util;
 
 import net.irisshaders.iris.shadows.ShadowRenderer;
+<<<<<<< HEAD
 import org.spongepowered.asm.mixin.Unique;
-import net.coderbot.iris.pipeline.ShadowRenderer;
+=======
+>>>>>>> 2e9a2468886dd84d09134d7aebf1b792995d500a
 import net.neoforged.fml.ModList;
 import net.neoforged.fml.loading.LoadingModList;
 

@@ -8,18 +8,27 @@ import me.shedaniel.clothconfig2.api.ConfigEntryBuilder;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.text.Text;
+import net.neoforged.neoforge.client.gui.IConfigScreenFactory;
 
 import java.util.List;
 import java.util.function.BiFunction;
 import java.util.function.Function;
 import java.util.function.Supplier;
 
+<<<<<<< HEAD
 
-public class VoxyConfigScreenFactory implements ModMenuApi {
+public class VoxyConfigScreenFactory {
     private static VoxyConfig DEFAULT;
-    @Override
-    public ConfigScreenFactory<?> getModConfigScreenFactory() {
-        return parent -> buildConfigScreen(parent, VoxyConfig.CONFIG);
+
+    public static IConfigScreenFactory getModConfigScreenFactory() {
+        return (container, parent) -> buildConfigScreen(parent, VoxyConfig.CONFIG);
+=======
+public class VoxyConfigScreenFactory {
+    private static final VoxyConfig DEFAULT = new VoxyConfig();
+
+    public static BiFunction<MinecraftClient, Screen, Screen> getModConfigScreenFactory() {
+        return (mc, parent) -> buildConfigScreen(parent, VoxyConfig.CONFIG);
+>>>>>>> 2e9a2468886dd84d09134d7aebf1b792995d500a
     }
 
     private static Screen buildConfigScreen(Screen parent, VoxyConfig config) {

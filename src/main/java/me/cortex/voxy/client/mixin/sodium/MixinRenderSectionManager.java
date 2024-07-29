@@ -2,8 +2,8 @@ package me.cortex.voxy.client.mixin.sodium;
 
 import me.cortex.voxy.client.config.VoxyConfig;
 import me.cortex.voxy.client.core.IGetVoxelCore;
-import me.jellysquid.mods.sodium.client.render.chunk.RenderSectionManager;
 import net.minecraft.client.world.ClientWorld;
+import org.embeddedt.embeddium.impl.render.chunk.RenderSectionManager;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;

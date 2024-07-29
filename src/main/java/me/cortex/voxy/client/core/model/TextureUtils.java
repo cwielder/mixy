@@ -1,7 +1,7 @@
 package me.cortex.voxy.client.core.model;
 
-import me.jellysquid.mods.sodium.client.util.color.ColorSRGB;
 import net.minecraft.util.math.ColorHelper;
+import org.embeddedt.embeddium.impl.util.color.ColorSRGB;
 
 //Texturing utils to manipulate data from the model bakery
 public class TextureUtils {

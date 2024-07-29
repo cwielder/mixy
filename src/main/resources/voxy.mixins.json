@@ -15,8 +15,12 @@
   ],
   "injectors": {
     "defaultRequire": 1
+<<<<<<< HEAD
   },
   "mixins": [
-    "chunky.MixinFabricWorld"
+    //"chunky.MixinFabricWorld"
   ]
+=======
+  }
+>>>>>>> 2e9a2468886dd84d09134d7aebf1b792995d500a
 }
