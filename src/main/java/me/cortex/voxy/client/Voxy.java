@@ -4,12 +4,9 @@ import me.cortex.voxy.MixyStub;
 import me.cortex.voxy.client.core.VoxelCore;
 import me.cortex.voxy.client.saver.ContextSelectionSystem;
 import me.cortex.voxy.client.terrain.WorldImportCommand;
-<<<<<<< HEAD
 import me.cortex.voxy.common.config.Serialization;
 import me.cortex.voxy.common.storage.compressors.ZSTDCompressor;
 import me.cortex.voxy.common.storage.config.StorageConfig;
-=======
->>>>>>> 2e9a2468886dd84d09134d7aebf1b792995d500a
 import net.minecraft.client.world.ClientWorld;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
