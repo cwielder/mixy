@@ -8,9 +8,14 @@ import me.cortex.voxy.client.core.rendering.util.UploadStream;
 import me.cortex.voxy.client.mixin.joml.AccessFrustumIntersection;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.render.RenderLayer;
+import org.joml.FrustumIntersection;
 import org.joml.Matrix4f;
 import org.joml.Vector3f;
+import org.joml.Vector4f;
 import org.lwjgl.system.MemoryUtil;
+
+import java.lang.invoke.MethodHandles;
+import java.lang.invoke.VarHandle;
 
 import static org.lwjgl.opengl.ARBDirectStateAccess.glGetNamedFramebufferAttachmentParameteriv;
 import static org.lwjgl.opengl.ARBDirectStateAccess.glTextureParameteri;
@@ -125,7 +130,8 @@ public class Gl46MeshletsFarWorldRenderer extends AbstractFarWorldRenderer<Gl46M
         MemoryUtil.memPutInt(ptr, this.sy); ptr += 4;
         MemoryUtil.memPutInt(ptr, this.sz); ptr += 4;
         MemoryUtil.memPutInt(ptr, this.geometry.getSectionCount()); ptr += 4;
-        var planes = ((AccessFrustumIntersection)this.frustum).getPlanes();
+//        var planes = ((AccessFrustumIntersection)this.frustum).getPlanes();
+        var planes = AccessFrustumIntersection.getPlanes(this.frustum);
         for (var plane : planes) {
             plane.getToAddress(ptr); ptr += 4*4;
         }
