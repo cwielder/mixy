@@ -20,7 +20,6 @@ public class AccessFrustumIntersection {
             planesField = FrustumIntersection.class.getDeclaredField("planes");
             planesField.setAccessible(true);
             planesHandle = MethodHandles.lookup().unreflectVarHandle(planesField);
-            planesField.setAccessible(false);
         } catch (NoSuchFieldException | IllegalAccessException e) {
             throw new RuntimeException(e);
         }
