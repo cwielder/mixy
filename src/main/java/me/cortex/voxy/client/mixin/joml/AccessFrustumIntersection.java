@@ -10,23 +10,8 @@ import java.lang.invoke.MethodHandles;
 import java.lang.invoke.VarHandle;
 import java.lang.reflect.Field;
 
-//@Mixin(value = FrustumIntersection.class, remap = false)
-public class AccessFrustumIntersection {
-    //@Accessor Vector4f[] getPlanes();
-    private static final VarHandle planesHandle;
-    static {
-        Field planesField = null;
-        try {
-            planesField = FrustumIntersection.class.getDeclaredField("planes");
-            planesField.setAccessible(true);
-            planesHandle = MethodHandles.lookup().unreflectVarHandle(planesField);
-        } catch (NoSuchFieldException | IllegalAccessException e) {
-            throw new RuntimeException(e);
-        }
+@Mixin(value = FrustumIntersection.class, remap = false)
+public interface AccessFrustumIntersection {
+    @Accessor Vector4f[] getPlanes();
 
-    }
-
-    public static Vector4f[] getPlanes(FrustumIntersection fi) {
-        return (Vector4f[]) planesHandle.get(fi);
-    }
 }

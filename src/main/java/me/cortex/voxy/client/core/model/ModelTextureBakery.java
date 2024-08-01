@@ -208,7 +208,11 @@ public class ModelTextureBakery {
 
 
         if (blockEntityModel != null && !renderFluid) {
-            blockEntityModel.renderOut();
+            try {
+                blockEntityModel.renderOut();
+            } catch (IllegalStateException e) {
+                System.err.println("Got empty buffer builder! for model " + blockEntityModel);
+            }
         }
 
         var bb = vc.begin(VertexFormat.DrawMode.QUADS, VertexFormats.POSITION_TEXTURE_COLOR);

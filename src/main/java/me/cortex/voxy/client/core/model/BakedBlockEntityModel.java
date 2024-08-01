@@ -81,14 +81,13 @@ public class BakedBlockEntityModel {
             }
         }
 
-        public boolean putInto(VertexConsumer vc) {
+        public void putInto(VertexConsumer vc) {
             this.next();
             for (var vert : this.vertices) {
                 vc.vertex(Float.intBitsToFloat(vert[0]), Float.intBitsToFloat(vert[1]), Float.intBitsToFloat(vert[2]))
                         .color(vert[3], vert[4], vert[5], vert[6])
                         .texture(Float.intBitsToFloat(vert[7]), Float.intBitsToFloat(vert[8]));
             }
-            return this.vertices.isEmpty();
         }
     }
 
@@ -110,9 +109,8 @@ public class BakedBlockEntityModel {
                     glBindTexture(GL_TEXTURE_2D, texture.getGlId());
                 }
             }
-            if (!layer.putInto(bb)) {
-                BufferRenderer.draw(bb.end());
-            }
+            layer.putInto(bb);
+            BufferRenderer.draw(bb.end());
         }
     }
 

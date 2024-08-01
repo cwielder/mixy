@@ -1,11 +1,11 @@
 package me.cortex.voxy.client.core.rendering;
 
+import me.cortex.voxy.client.AccessFrustumIntersection;
 import me.cortex.voxy.client.core.gl.GlBuffer;
 import me.cortex.voxy.client.core.gl.shader.Shader;
 import me.cortex.voxy.client.core.gl.shader.ShaderType;
 import me.cortex.voxy.client.core.rendering.building.RenderDataFactory;
 import me.cortex.voxy.client.core.rendering.util.UploadStream;
-import me.cortex.voxy.client.mixin.joml.AccessFrustumIntersection;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.render.RenderLayer;
 import org.joml.FrustumIntersection;
